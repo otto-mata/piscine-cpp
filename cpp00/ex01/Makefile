@@ -1,8 +1,10 @@
 NAME=phonebook
-CPPFLAGS=-Wall -Wextra -Werror -std=c++98
+CPPFLAGS=-Wall -Wextra -Werror -std=c++98 -g -O0 -v
 CXX=clang++
 
-SRC=main.cpp
+SRC=main.cpp \
+	Contact.cpp \
+	PhoneBook.cpp
 OBJ=$(SRC:.cpp=.o)
 
 $(NAME): $(OBJ)

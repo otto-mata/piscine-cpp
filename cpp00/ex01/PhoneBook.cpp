@@ -6,15 +6,11 @@
 /*   By: tblochet <tblochet@student.42.fr>                └─┘ ┴  ┴ └─┘        */
 /*                                                        ┌┬┐┌─┐┌┬┐┌─┐        */
 /*   Created: 2025/03/26 18:16:19 by tblochet             │││├─┤ │ ├─┤        */
-/*   Updated: 2025/03/26 18:27:43 by tblochet             ┴ ┴┴ ┴ ┴ ┴ ┴        */
+/*   Updated: 2025/03/28 16:11:28 by tblochet             ┴ ┴┴ ┴ ┴ ┴ ┴        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
-
-PhoneBook::~PhoneBook()
-{
-}
 
 PhoneBook::PhoneBook(const PhoneBook &other)
 {
@@ -35,8 +31,96 @@ Contact *PhoneBook::getContacts()
 	return (this->_contacts);
 }
 
-int	PhoneBook::addContact(Contact contact)
+int PhoneBook::addContact(Contact contact)
 {
-	return (1);
+	if (this->_current >= MAX_CONTACTS)
+		this->_current = 0;
+	this->_contacts[this->_current] = contact;
+	this->_current++;
+	return (0);
 }
 
+int PhoneBook::active()
+{
+	return (this->_active);
+}
+
+static std::string repeatString(std::string str, size_t n)
+{
+	std::string reps = "";
+	for (size_t i = 0; i < n; i++)
+	{
+		reps += str;
+	}
+	return (reps);
+}
+
+static std::string chopString(std::string original)
+{
+	std::string chopped;
+
+	if (original.size() == COLUMN_WIDTH)
+		return std::string(original);
+	if (original.size() < COLUMN_WIDTH)
+		chopped = repeatString(" ", COLUMN_WIDTH - original.size()) + original;
+	else
+	{
+		chopped = std::string(original).substr(0, COLUMN_WIDTH);
+		chopped[COLUMN_WIDTH - 1] = '.';
+	}
+	return (chopped);
+}
+
+static std::string indexToString (size_t i)
+{
+    std::stringstream ss;
+    ss << (i + 1);
+    return ss.str();
+}
+
+void PhoneBook::getUserCommand()
+{
+	std::string cmd;
+
+	std::cout << "PB> ";
+	std::getline(std::cin, cmd);
+	if (std::cin.eof())
+	{
+		this->_active = 0;
+		std::cin.clear();
+		std::cout << "\nEXITING" << std::endl;
+	}
+	else if (cmd == EXIT_CMD)
+	{
+		std::cout << "EXITING" << std::endl;
+		this->_active = 0;
+	}
+	else if (cmd == ADD_CMD)
+	{
+		Contact newContact = Contact::fromInput();
+		this->addContact(newContact);
+	}
+	else if (cmd == SEARCH_CMD)
+	{
+		std::cout << 
+			"|" + chopString("INDEX") 
+			+ "|" + chopString("FIRSTNAME")
+			+ "|" + chopString("LASTNAME")
+			+ "|" + chopString("NICKNAME")
+			+ "|" << std::endl;
+
+		for (size_t i = 0; i < MAX_CONTACTS; i++)
+		{
+			Contact current = this->_contacts[i];
+			if (!current.isInitialized())
+				continue ;
+			
+			std::cout << 
+			"|" + chopString(indexToString(i)) 
+			+ "|" + chopString(current.firstname())
+			+ "|" + chopString(current.lastname())
+			+ "|" + chopString(current.nickname())
+			+ "|" << std::endl;
+		}
+	}
+}
