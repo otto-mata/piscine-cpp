@@ -6,7 +6,7 @@
 /*   By: tblochet <tblochet@student.42.fr>                └─┘ ┴  ┴ └─┘        */
 /*                                                        ┌┬┐┌─┐┌┬┐┌─┐        */
 /*   Created: 2025/03/28 18:30:55 by tblochet             │││├─┤ │ ├─┤        */
-/*   Updated: 2025/03/28 19:36:57 by tblochet             ┴ ┴┴ ┴ ┴ ┴ ┴        */
+/*   Updated: 2025/03/28 20:09:53 by tblochet             ┴ ┴┴ ┴ ┴ ┴ ┴        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,17 +55,25 @@ Account::Account(int initial_deposit)
 {
 	this->_amount = initial_deposit;
 	this->_accountIndex = Account::getNbAccounts();
-	_totalAmount += initial_deposit;
-	_nbAccounts++;
+	Account::_totalAmount += initial_deposit;
+	Account::_nbAccounts++;
 	Account::_displayTimestamp();
-	std::cout << " index:" << this->_accountIndex << ";amount:"<< this->_amount<<";created" << std::endl;
+	std::cout
+		<< " index:" << this->_accountIndex
+		<< ";amount:"<< this->_amount
+		<<";created"
+		<< std::endl;
 	
 }
 
 Account::~Account(void) {
-	_nbAccounts--;
+	Account::_nbAccounts--;
 	Account::_displayTimestamp();
-	std::cout << " index:" << this->_accountIndex << ";amount:"<< this->_amount<<";closed" << std::endl;
+	std::cout
+		<< " index:" << this->_accountIndex
+		<< ";amount:"<< this->_amount
+		<<";closed"
+		<< std::endl;
 }
 
 void Account::makeDeposit(int deposit)
@@ -80,8 +88,8 @@ void Account::makeDeposit(int deposit)
 		<< std::endl;
 	this->_amount += deposit;
 	this->_nbDeposits++;
-	_totalAmount+=deposit;
-	_totalNbDeposits++;
+	Account::_totalAmount+=deposit;
+	Account::_totalNbDeposits++;
 }
 
 bool Account::makeWithdrawal(int withdrawal)
@@ -105,8 +113,8 @@ bool Account::makeWithdrawal(int withdrawal)
 		<< std::endl;
 	this->_amount -= withdrawal;
 	this->_nbWithdrawals++;
-	_totalAmount -= withdrawal;
-	_totalNbWithdrawals++;
+	Account::_totalAmount -= withdrawal;
+	Account::_totalNbWithdrawals++;
 	return (true);
 }
 
