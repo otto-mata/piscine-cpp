@@ -1,10 +1,8 @@
-NAME=phonebook
-CXXFLAGS=-Wall -Wextra -Werror -std=c++98 -g -O0 -v
+NAME=Now_we\u2019re_talking
+CXXFLAGS=-Wall -Wextra -Werror -std=c++98
 CXX=clang++
 
-SRC=main.cpp \
-	Contact.cpp \
-	PhoneBook.cpp
+SRC=main.cpp Fixed.cpp
 OBJ=$(SRC:.cpp=.o)
 
 $(NAME): $(OBJ)

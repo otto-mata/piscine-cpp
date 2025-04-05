@@ -1,5 +1,5 @@
 NAME=Moar_brainz!
-CPPFLAGS=-Wall -Wextra -Werror -std=c++98
+CXXFLAGS=-Wall -Wextra -Werror -std=c++98
 CXX=clang++
 
 SRC=Zombie.cpp \
@@ -8,7 +8,7 @@ SRC=Zombie.cpp \
 OBJ=$(SRC:.cpp=.o)
 
 $(NAME): $(OBJ)
-	$(CXX) $(CPPFLAGS) $^ -o $@
+	$(CXX) $(CXXFLAGS) $^ -o $@
 
 clean:
 	rm -f $(OBJ)
