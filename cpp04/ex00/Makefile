@@ -5,7 +5,9 @@ DEBUG=-g -O0
 CXXFLAGS=-Wall -Werror -Wextra -std=c++98 -Iincludes/ $(DEPS) $(DEBUG)
 SRC=src/main.cpp \
 	src/Animal.cpp \
+	src/WrongAnimal.cpp \
 	src/Cat.cpp \
+	src/WrongCat.cpp \
 	src/Dog.cpp
 
 OBJDIR=./build
