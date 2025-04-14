@@ -4,11 +4,12 @@ DEPS=-MMD
 DEBUG=-g -O0
 CXXFLAGS=-Wall -Werror -Wextra -std=c++98 -Iincludes/ $(DEPS) $(DEBUG)
 SRC=src/main.cpp \
-	src/previous/Animal.cpp \
-	src/previous/Cat.cpp \
-	src/previous/Dog.cpp \
-	src/previous/WrongAnimal.cpp \
-	src/previous/WrongCat.cpp
+	src/Animal.cpp \
+	src/Cat.cpp \
+	src/Dog.cpp \
+	src/WrongAnimal.cpp \
+	src/WrongCat.cpp \
+	src/Brain.cpp
 
 OBJDIR=./build
 OBJ=$(addprefix $(OBJDIR)/,$(SRC:.cpp=.o))
