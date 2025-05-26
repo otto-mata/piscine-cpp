@@ -4,27 +4,30 @@
 #include <WrongAnimal.hpp>
 #include <WrongCat.hpp>
 #include <Brain.hpp>
+#ifndef ANIMALS_COUNT
+# define ANIMALS_COUNT 42
+#endif
 
 int main()
 {
-	const Animal *meta = new Animal();
-	const Animal *cat = new Cat();
-	const Animal *dog = new Dog();
-	const WrongAnimal *whatisthis = new WrongAnimal();
-	const WrongAnimal *wrongCat = new WrongCat();
-
-	std::cout << meta->getType() << std::endl;
-	std::cout << dog->getType() << std::endl;
-	std::cout << cat->getType() << std::endl;
-	meta->makeSound();
-	dog->makeSound();
-	cat->makeSound();
-	std::cout << whatisthis->getType() << std::endl;
-	std::cout << wrongCat->getType() << std::endl;
-	whatisthis->makeSound();
-	wrongCat->makeSound();
-	const Brain *brain0 = new Brain();
-	brain0->idea(10);
-	brain0->idea(234);
-	return (0);
+	if (ANIMALS_COUNT % 2 || ANIMALS_COUNT < 2)
+	{
+		std::cout
+			<< "Invalid number of animals (got "
+			<< ANIMALS_COUNT
+			<< ")."
+			<< std::endl;
+	}
+	Animal *animals[ANIMALS_COUNT];
+	for (int i = 0; i < ANIMALS_COUNT; i++)
+	{
+		if (i % 2)
+			animals[i] = new Dog();
+		else
+			animals[i] = new Cat();
+	}
+	for (int i = 0; i < ANIMALS_COUNT; i++)
+		animals[i]->makeSound();
+	for (int i = 0; i < ANIMALS_COUNT; i++)
+		delete animals[i];
 }

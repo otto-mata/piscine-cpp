@@ -1,5 +1,5 @@
 NAME=phonebook
-CXXFLAGS=-Wall -Wextra -Werror -std=c++98 -g -O0 -v
+CXXFLAGS=-Wall -Wextra -Werror -std=c++98
 CXX=clang++
 
 SRC=main.cpp \

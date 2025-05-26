@@ -8,7 +8,8 @@ Animal::Animal()
 
 Animal::Animal(const Animal &other)
 {
-	*this = other;
+	type = other.getType();
+	_sound = other.getSound();
 }
 
 Animal::Animal(std::string animalType, std::string sound)
@@ -27,7 +28,10 @@ Animal &Animal::operator=(const Animal &other)
 	return (*this);
 }
 
-Animal::~Animal() {}
+Animal::~Animal()
+{
+	std::cout << "Destructor called for class 'Animal'." << std::endl;
+}
 
 std::string Animal::getType() const
 {
