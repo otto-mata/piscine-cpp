@@ -6,7 +6,7 @@
 /*   By: tblochet <tblochet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 16:50:51 by tblochet          #+#    #+#             */
-/*   Updated: 2025/05/26 04:44:42 by tblochet         ###   ########.fr       */
+/*   Updated: 2025/06/03 16:39:50 by tblochet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,11 @@ main(int argc, char** argv)
   std::string pattern(argv[2]);
   std::string replacement(argv[3]);
   std::string targetFile(filePath + ".replace");
+
+  if (pattern.length() == 0) {
+    std::cerr << "Runtime error: pattern is empty." << std::endl;
+    return (1);
+  }
 
   ifile.open(filePath.c_str());
   if (ifile.fail()) {

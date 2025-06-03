@@ -6,7 +6,7 @@
 /*   By: tblochet <tblochet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 12:44:55 by tblochet          #+#    #+#             */
-/*   Updated: 2025/05/26 04:38:45 by tblochet         ###   ########.fr       */
+/*   Updated: 2025/06/03 16:38:32 by tblochet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ main()
             << ", holding value: " << hiThisIsBrain << std::endl;
 
   std::cout << "Memory address of stringPTR: " << &stringPTR
-            << ", holding value: " << stringPTR << std::endl;
+            << ", pointing to value: " << *stringPTR << std::endl;
 
   std::cout << "Memory address of stringREF: " << &stringREF
             << ", holding value: " << stringREF << std::endl;
