@@ -6,7 +6,7 @@
 /*   By: tblochet <tblochet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 16:50:51 by tblochet          #+#    #+#             */
-/*   Updated: 2025/06/03 16:39:50 by tblochet         ###   ########.fr       */
+/*   Updated: 2025/06/03 16:42:43 by tblochet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,13 @@ main(int argc, char** argv)
               << "'." << std::endl;
     return (1);
   }
-
+  std::string replaced;
   while (!ifile.eof()) {
     getline(ifile, base);
-    std::string replaced = replaceInLine(base, pattern, replacement);
+    if (pattern != replacement)
+      replaced = replaceInLine(base, pattern, replacement);
+    else
+      replaced = base;
     ofile << replaced << std::endl;
   }
   ifile.close();
