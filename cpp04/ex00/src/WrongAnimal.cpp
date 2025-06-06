@@ -2,59 +2,66 @@
 
 WrongAnimal::WrongAnimal()
 {
-	type = "Strange thing";
-	_sound = "*hurtful screeching*";
+  type = "Strange thing";
+  _sound = "*hurtful screeching*";
+  std::cout << "[WRONGANIMAL] Default constructor called" << std::endl;
 }
 
-WrongAnimal::WrongAnimal(const WrongAnimal &other)
+WrongAnimal::WrongAnimal(const WrongAnimal& other)
 {
-	*this = other;
+  *this = other;
+  std::cout << "[WRONGANIMAL] Copy constructor called" << std::endl;
 }
 
 WrongAnimal::WrongAnimal(std::string animalType, std::string sound)
 {
-	type = animalType;
-	_sound = sound;
+  type = animalType;
+  _sound = sound;
+  std::cout << "[WRONGANIMAL] Constructor called" << std::endl;
 }
 
-WrongAnimal &WrongAnimal::operator=(const WrongAnimal &other)
+WrongAnimal&
+WrongAnimal::operator=(const WrongAnimal& other)
 {
-	if (this != &other)
-	{
-		type = other.getType();
-		_sound = other.getSound();
-	}
-	return (*this);
+  if (this != &other) {
+    type = other.getType();
+    _sound = other.getSound();
+  }
+  std::cout << "[WRONGANIMAL] Assignment constructor called" << std::endl;
+  return (*this);
 }
 
-WrongAnimal::~WrongAnimal() {}
-
-std::string WrongAnimal::getType() const
+WrongAnimal::~WrongAnimal()
 {
-	return (type);
+  std::cout << "[WRONGANIMAL] Destructor called" << std::endl;
 }
 
-void WrongAnimal::setType(std::string &newType)
+std::string
+WrongAnimal::getType() const
 {
-	type = newType;
+  return (type);
 }
 
-std::string WrongAnimal::getSound() const
+void
+WrongAnimal::setType(std::string& newType)
 {
-	return (_sound);
+  type = newType;
 }
 
-void WrongAnimal::setSound(std::string &newSound)
+std::string
+WrongAnimal::getSound() const
 {
-	_sound = newSound;
+  return (_sound);
 }
 
-void WrongAnimal::makeSound() const
+void
+WrongAnimal::setSound(std::string& newSound)
 {
-	std::cout
-		<< "<"
-		<< this->type
-		<< "> "
-		<< this->_sound
-		<< std::endl;
+  _sound = newSound;
+}
+
+void
+WrongAnimal::makeSound() const
+{
+  std::cout << "<" << this->type << "> " << this->_sound << std::endl;
 }

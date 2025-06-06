@@ -1,60 +1,79 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tblochet <tblochet@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/06 17:40:31 by tblochet          #+#    #+#             */
+/*   Updated: 2025/06/06 17:40:32 by tblochet         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Animal.hpp"
 
 Animal::Animal()
 {
-	type = "LUCA";
-	_sound = "*eery sound from the past*";
+  type = "LUCA";
+  _sound = "*eery sound from the past*";
+  std::cout << "[ANIMAL] Default constructor called" << std::endl;
 }
 
-Animal::Animal(const Animal &other)
+Animal::Animal(const Animal& other)
 {
-	*this = other;
+  std::cout << "[ANIMAL] Copy constructor called" << std::endl;
+  *this = other;
 }
 
 Animal::Animal(std::string animalType, std::string sound)
 {
-	type = animalType;
-	_sound = sound;
+  type = animalType;
+  _sound = sound;
+  std::cout << "[ANIMAL] Constructor called" << std::endl;
 }
 
-Animal &Animal::operator=(const Animal &other)
+Animal&
+Animal::operator=(const Animal& other)
 {
-	if (this != &other)
-	{
-		type = other.getType();
-		_sound = other.getSound();
-	}
-	return (*this);
+  if (this != &other) {
+    type = other.getType();
+    _sound = other.getSound();
+  }
+  std::cout << "[ANIMAL] Assignment constructor called" << std::endl;
+  return (*this);
 }
 
-Animal::~Animal() {}
-
-std::string Animal::getType() const
+Animal::~Animal()
 {
-	return (type);
+  std::cout << "[ANIMAL] Destructor called" << std::endl;
 }
 
-void Animal::setType(std::string &newType)
+std::string
+Animal::getType() const
 {
-	type = newType;
+  return (type);
 }
 
-std::string Animal::getSound() const
+void
+Animal::setType(std::string& newType)
 {
-	return (_sound);
+  type = newType;
 }
 
-void Animal::setSound(std::string &newSound)
+std::string
+Animal::getSound() const
 {
-	_sound = newSound;
+  return (_sound);
 }
 
-void Animal::makeSound() const
+void
+Animal::setSound(std::string& newSound)
 {
-	std::cout
-		<< "<"
-		<< this->type
-		<< "> "
-		<< this->_sound
-		<< std::endl;
+  _sound = newSound;
+}
+
+void
+Animal::makeSound() const
+{
+  std::cout << "<" << this->type << "> " << this->_sound << std::endl;
 }

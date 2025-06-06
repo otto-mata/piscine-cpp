@@ -10,18 +10,18 @@ class Animal
 
 	public:
 	Animal();
-	Animal(const Animal &other);
 	Animal(std::string animalType, std::string sound);
-	~Animal();
-	Animal &operator=(const Animal &other);
+	Animal(const Animal &other);
+	virtual ~Animal();
+	virtual Animal &operator=(const Animal &other);
 	
-	std::string getType() const;
-	void setType(std::string &newType);
+	virtual std::string getType() const;
+	virtual void setType(std::string &newType);
 	
-	std::string getSound() const;
-	void setSound(std::string &newSound);
+	virtual std::string getSound() const;
+	virtual void setSound(std::string &newSound);
 
-	void makeSound() const;
+	virtual void makeSound() const;
 
 	private:
 	std::string _sound;
