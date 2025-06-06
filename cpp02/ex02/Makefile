@@ -1,5 +1,5 @@
 NAME=Now_we\u2019re_talking
-CXXFLAGS=-Wall -Wextra -Werror -std=c++98
+CXXFLAGS=-Wall -Wextra -Werror -std=c++98 -g
 CXX=clang++
 
 SRC=main.cpp Fixed.cpp

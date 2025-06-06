@@ -6,7 +6,7 @@
 /*   By: tblochet <tblochet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 11:22:55 by tblochet          #+#    #+#             */
-/*   Updated: 2025/05/26 04:53:56 by tblochet         ###   ########.fr       */
+/*   Updated: 2025/06/06 15:05:10 by tblochet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ private:
   int _rawBits;
 
 public:
-  /* ctor */ Fixed();
-  /* ctor */ Fixed(const int& n);
-  /* ctor */ Fixed(const float& f);
-  /* ctor */ Fixed(const Fixed& other);
+  Fixed();
+  Fixed(const int& n);
+  Fixed(const float& f);
+  Fixed(const Fixed& other);
   Fixed& operator=(const Fixed& other);
-  /* dtor */ ~Fixed();
+  ~Fixed();
   int getRawBits() const;
   void setRawBits(const int raw);
   float toFloat() const;
